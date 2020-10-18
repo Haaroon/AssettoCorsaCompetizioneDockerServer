@@ -11,6 +11,7 @@ RUN dpkg --add-architecture i386 \
 RUN  apt-get update \
   && apt-get install -y wget unzip gnupg software-properties-common
 # Unzip file personal Assetto Corsa Competizione Server (download from steam and save as zip file)
+COPY acc.zip /root/
 RUN unzip acc.zip -d /root/ \
     && rm -rf /root/__MACOSX \
     && rm -rf /root/acc.zip \
@@ -37,8 +38,8 @@ COPY serverConfigs/event.json /root/acc/server/cfg/
 COPY serverConfigs/entrylist.json /root/acc/server/cfg/
 COPY serverConfigs/configuration.json  /root/acc/server/cfg/
 # Forward the ports
-EXPOSE 9231/udp
-EXPOSE 9232/tcp
+#EXPOSE 9231/udp
+#EXPOSE 9232/tcp
 WORKDIR /root/acc/server/
 # Run the server
 CMD ["/bin/bash", "wine", "/root/acc/server/accServer.exe"]
