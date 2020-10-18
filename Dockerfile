@@ -11,6 +11,7 @@ RUN dpkg --add-architecture i386 \
 RUN  apt-get update \
   && apt-get install -y wget unzip gnupg software-properties-common
 # Unzip file personal Assetto Corsa Competizione Server (download from steam and save as zip file)
+COPY acc.zip /root/
 RUN unzip acc.zip -d /root/ \
     && rm -rf /root/__MACOSX \
     && rm -rf /root/acc.zip \
