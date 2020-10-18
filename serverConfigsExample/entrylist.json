@@ -1,0 +1,27 @@
+{
+  "entries": [
+    {
+      "drivers": [
+        {
+          "playerID": "SXXXXXXX1"
+        }
+      ],
+      "raceNumber": 1,
+      "forcedCarModel": -1,
+      "overrideDriverInfo": 0,
+      "isServerAdmin": 1
+    },
+    {
+      "drivers": [
+        {
+          "playerID": "SXXXX2"
+        }
+      ],
+      "raceNumber": 2,
+      "forcedCarModel": -1,
+      "overrideDriverInfo": 0,
+      "isServerAdmin": 1
+    }
+  ],
+  "forceEntryList": 0
+}
