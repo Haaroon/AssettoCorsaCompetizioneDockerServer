@@ -33,7 +33,7 @@ async def start(ctx):
         response = 'Cannot start new docker container, one already running'
         await ctx.channel.send(response)
         return
-    proc=subprocess.run(['docker', 'create', '-t', '-i', 'accserver', '/bin/bash', 'wine', '/root/acc/server/accServer.exe', '-p', '0.0.0.0:9231:9231/udp', '-p','0.0.0.0:9232:9232/tcp'], capture_output=True)
+    proc=subprocess.run(['docker', 'create', '-p', '0.0.0.0:9231:9231/udp', '-p','0.0.0.0:9232:9232/tcp', '-t', '-i', 'accserver', '/bin/bash', 'wine', '/root/acc/server/accServer.exe'], capture_output=True)
     proc_id = proc.stdout.decode()[:-1]
     subprocess.run(['docker', 'start', proc_id])
     await ctx.channel.send('Run via subprocess '+str(proc_id))
@@ -117,6 +117,7 @@ async def changetrack(ctx, track_name=''):
         return
     elif track_name not in track_list:
         await ctx.channel.send('Track not found in track list. See https://www.acc-wiki.info/wiki/Server_Configuration#ID_Lists')
+        return
     # stopping server
     await stop(ctx)
     # change name of track
